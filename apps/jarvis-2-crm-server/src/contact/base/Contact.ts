@@ -11,11 +11,23 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsString } from "class-validator";
+import { IsString, MaxLength, IsOptional, IsDate } from "class-validator";
 import { Type } from "class-transformer";
 
 @ObjectType()
 class Contact {
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  assignedTo!: string | null;
+
   @ApiProperty({
     required: true,
   })
@@ -31,6 +43,18 @@ class Contact {
   @IsString()
   @Field(() => String)
   id!: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @MaxLength(1000)
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  manager!: string | null;
 
   @ApiProperty({
     required: true,

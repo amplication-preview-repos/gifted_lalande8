@@ -49,8 +49,10 @@ export class DealControllerBase {
     return await this.service.createDeal({
       data: data,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -73,8 +75,10 @@ export class DealControllerBase {
     return this.service.deals({
       ...args,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -98,8 +102,10 @@ export class DealControllerBase {
     const result = await this.service.deal({
       where: params,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -132,8 +138,10 @@ export class DealControllerBase {
         where: params,
         data: data,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });
@@ -165,8 +173,10 @@ export class DealControllerBase {
       return await this.service.deleteDeal({
         where: params,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });

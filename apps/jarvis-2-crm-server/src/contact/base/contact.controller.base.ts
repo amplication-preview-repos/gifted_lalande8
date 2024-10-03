@@ -51,8 +51,10 @@ export class ContactControllerBase {
     return await this.service.createContact({
       data: data,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -75,8 +77,10 @@ export class ContactControllerBase {
     return this.service.contacts({
       ...args,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -100,8 +104,10 @@ export class ContactControllerBase {
     const result = await this.service.contact({
       where: params,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -134,8 +140,10 @@ export class ContactControllerBase {
         where: params,
         data: data,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });
@@ -167,8 +175,10 @@ export class ContactControllerBase {
       return await this.service.deleteContact({
         where: params,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });

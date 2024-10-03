@@ -1,7 +1,7 @@
 import { Quote as TQuote } from "../api/quote/Quote";
 
-export const QUOTE_TITLE_FIELD = "id";
+export const QUOTE_TITLE_FIELD = "assignedTo";
 
 export const QuoteTitle = (record: TQuote): string => {
-  return record.id?.toString() || String(record.id);
+  return record.assignedTo?.toString() || String(record.id);
 };

@@ -51,8 +51,10 @@ export class InvoiceControllerBase {
     return await this.service.createInvoice({
       data: data,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -75,8 +77,10 @@ export class InvoiceControllerBase {
     return this.service.invoices({
       ...args,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -100,8 +104,10 @@ export class InvoiceControllerBase {
     const result = await this.service.invoice({
       where: params,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -134,8 +140,10 @@ export class InvoiceControllerBase {
         where: params,
         data: data,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });
@@ -167,8 +175,10 @@ export class InvoiceControllerBase {
       return await this.service.deleteInvoice({
         where: params,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });

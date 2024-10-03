@@ -18,10 +18,13 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Quote } from "./Quote";
 import { QuoteCountArgs } from "./QuoteCountArgs";
 import { QuoteFindManyArgs } from "./QuoteFindManyArgs";
 import { QuoteFindUniqueArgs } from "./QuoteFindUniqueArgs";
+import { CreateQuoteArgs } from "./CreateQuoteArgs";
+import { UpdateQuoteArgs } from "./UpdateQuoteArgs";
 import { DeleteQuoteArgs } from "./DeleteQuoteArgs";
 import { QuoteService } from "../quote.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -73,6 +76,45 @@ export class QuoteResolverBase {
       return null;
     }
     return result;
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Quote)
+  @nestAccessControl.UseRoles({
+    resource: "Quote",
+    action: "create",
+    possession: "any",
+  })
+  async createQuote(@graphql.Args() args: CreateQuoteArgs): Promise<Quote> {
+    return await this.service.createQuote({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Quote)
+  @nestAccessControl.UseRoles({
+    resource: "Quote",
+    action: "update",
+    possession: "any",
+  })
+  async updateQuote(
+    @graphql.Args() args: UpdateQuoteArgs
+  ): Promise<Quote | null> {
+    try {
+      return await this.service.updateQuote({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new GraphQLError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => Quote)

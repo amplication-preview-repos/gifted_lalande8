@@ -7,40 +7,50 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Company {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
+model Deal {
+  assignedTo String?
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  manager    String?
+  updatedAt  DateTime @updatedAt
 }
 
-model Contact {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
+model Company {
+  assignedTo String?
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  manager    String?
+  updatedAt  DateTime @updatedAt
 }
 
 model Invoice {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
+  assignedTo String?
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  manager    String?
+  updatedAt  DateTime @updatedAt
 }
 
-model Deal {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
-}
-
-model Quote {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  updatedAt DateTime @updatedAt
+model Contact {
+  assignedTo String?
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  manager    String?
+  updatedAt  DateTime @updatedAt
 }
 
 model Product {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
+}
+
+model Quote {
+  assignedTo String?
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  manager    String?
+  updatedAt  DateTime @updatedAt
 }
 
 model User {

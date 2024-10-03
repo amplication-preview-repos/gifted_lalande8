@@ -1,1 +1,4 @@
-export type InvoiceUpdateInput = {};
+export type InvoiceUpdateInput = {
+  assignedTo?: string | null;
+  manager?: string | null;
+};

@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common";
-import { CompanyModule } from "./company/company.module";
-import { ContactModule } from "./contact/contact.module";
-import { InvoiceModule } from "./invoice/invoice.module";
 import { DealModule } from "./deal/deal.module";
-import { QuoteModule } from "./quote/quote.module";
+import { CompanyModule } from "./company/company.module";
+import { InvoiceModule } from "./invoice/invoice.module";
+import { ContactModule } from "./contact/contact.module";
 import { ProductModule } from "./product/product.module";
+import { QuoteModule } from "./quote/quote.module";
 import { UserModule } from "./user/user.module";
 import { HealthModule } from "./health/health.module";
 import { PrismaModule } from "./prisma/prisma.module";
@@ -23,12 +23,12 @@ import { AuthModule } from "./auth/auth.module";
   imports: [
     ACLModule,
     AuthModule,
-    CompanyModule,
-    ContactModule,
-    InvoiceModule,
     DealModule,
-    QuoteModule,
+    CompanyModule,
+    InvoiceModule,
+    ContactModule,
     ProductModule,
+    QuoteModule,
     UserModule,
     HealthModule,
     PrismaModule,

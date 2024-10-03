@@ -18,10 +18,13 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Contact } from "./Contact";
 import { ContactCountArgs } from "./ContactCountArgs";
 import { ContactFindManyArgs } from "./ContactFindManyArgs";
 import { ContactFindUniqueArgs } from "./ContactFindUniqueArgs";
+import { CreateContactArgs } from "./CreateContactArgs";
+import { UpdateContactArgs } from "./UpdateContactArgs";
 import { DeleteContactArgs } from "./DeleteContactArgs";
 import { ContactService } from "../contact.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -75,6 +78,47 @@ export class ContactResolverBase {
       return null;
     }
     return result;
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Contact)
+  @nestAccessControl.UseRoles({
+    resource: "Contact",
+    action: "create",
+    possession: "any",
+  })
+  async createContact(
+    @graphql.Args() args: CreateContactArgs
+  ): Promise<Contact> {
+    return await this.service.createContact({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Contact)
+  @nestAccessControl.UseRoles({
+    resource: "Contact",
+    action: "update",
+    possession: "any",
+  })
+  async updateContact(
+    @graphql.Args() args: UpdateContactArgs
+  ): Promise<Contact | null> {
+    try {
+      return await this.service.updateContact({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new GraphQLError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => Contact)

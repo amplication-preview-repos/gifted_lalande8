@@ -49,8 +49,10 @@ export class QuoteControllerBase {
     return await this.service.createQuote({
       data: data,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -73,8 +75,10 @@ export class QuoteControllerBase {
     return this.service.quotes({
       ...args,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -98,8 +102,10 @@ export class QuoteControllerBase {
     const result = await this.service.quote({
       where: params,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -132,8 +138,10 @@ export class QuoteControllerBase {
         where: params,
         data: data,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });
@@ -165,8 +173,10 @@ export class QuoteControllerBase {
       return await this.service.deleteQuote({
         where: params,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });

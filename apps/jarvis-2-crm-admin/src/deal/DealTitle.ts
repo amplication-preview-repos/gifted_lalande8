@@ -1,7 +1,7 @@
 import { Deal as TDeal } from "../api/deal/Deal";
 
-export const DEAL_TITLE_FIELD = "id";
+export const DEAL_TITLE_FIELD = "assignedTo";
 
 export const DealTitle = (record: TDeal): string => {
-  return record.id?.toString() || String(record.id);
+  return record.assignedTo?.toString() || String(record.id);
 };

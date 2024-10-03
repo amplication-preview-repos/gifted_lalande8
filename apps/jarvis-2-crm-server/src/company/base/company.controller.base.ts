@@ -51,8 +51,10 @@ export class CompanyControllerBase {
     return await this.service.createCompany({
       data: data,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -75,8 +77,10 @@ export class CompanyControllerBase {
     return this.service.companies({
       ...args,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -100,8 +104,10 @@ export class CompanyControllerBase {
     const result = await this.service.company({
       where: params,
       select: {
+        assignedTo: true,
         createdAt: true,
         id: true,
+        manager: true,
         updatedAt: true,
       },
     });
@@ -134,8 +140,10 @@ export class CompanyControllerBase {
         where: params,
         data: data,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });
@@ -167,8 +175,10 @@ export class CompanyControllerBase {
       return await this.service.deleteCompany({
         where: params,
         select: {
+          assignedTo: true,
           createdAt: true,
           id: true,
+          manager: true,
           updatedAt: true,
         },
       });

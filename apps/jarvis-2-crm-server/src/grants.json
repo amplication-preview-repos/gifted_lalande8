@@ -1,61 +1,61 @@
 [
   {
     "role": "user",
-    "resource": "Company",
+    "resource": "Deal",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Company",
+    "resource": "Deal",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Company",
+    "resource": "Deal",
     "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Company",
+    "resource": "Deal",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Company",
+    "resource": "Deal",
     "action": "read:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Contact",
+    "resource": "Company",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Contact",
+    "resource": "Company",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Contact",
+    "resource": "Company",
     "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Contact",
+    "resource": "Company",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Contact",
+    "resource": "Company",
     "action": "read:any",
     "attributes": "*"
   },
@@ -91,61 +91,31 @@
   },
   {
     "role": "user",
-    "resource": "Deal",
+    "resource": "Contact",
     "action": "read:own",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Deal",
+    "resource": "Contact",
     "action": "create:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Deal",
+    "resource": "Contact",
     "action": "update:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Deal",
+    "resource": "Contact",
     "action": "delete:any",
     "attributes": "*"
   },
   {
     "role": "user",
-    "resource": "Deal",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Quote",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Quote",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Quote",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Quote",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Quote",
+    "resource": "Contact",
     "action": "read:any",
     "attributes": "*"
   },
@@ -176,6 +146,36 @@
   {
     "role": "user",
     "resource": "Product",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Quote",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Quote",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Quote",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Quote",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "Quote",
     "action": "read:any",
     "attributes": "*"
   },

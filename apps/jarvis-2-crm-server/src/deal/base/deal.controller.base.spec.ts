@@ -18,25 +18,33 @@ import { DealService } from "../deal.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
+  assignedTo: "exampleAssignedTo",
   createdAt: new Date(),
   id: "exampleId",
+  manager: "exampleManager",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
+  assignedTo: "exampleAssignedTo",
   createdAt: new Date(),
   id: "exampleId",
+  manager: "exampleManager",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
   {
+    assignedTo: "exampleAssignedTo",
     createdAt: new Date(),
     id: "exampleId",
+    manager: "exampleManager",
     updatedAt: new Date(),
   },
 ];
 const FIND_ONE_RESULT = {
+  assignedTo: "exampleAssignedTo",
   createdAt: new Date(),
   id: "exampleId",
+  manager: "exampleManager",
   updatedAt: new Date(),
 };
 

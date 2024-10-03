@@ -18,10 +18,13 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { Company } from "./Company";
 import { CompanyCountArgs } from "./CompanyCountArgs";
 import { CompanyFindManyArgs } from "./CompanyFindManyArgs";
 import { CompanyFindUniqueArgs } from "./CompanyFindUniqueArgs";
+import { CreateCompanyArgs } from "./CreateCompanyArgs";
+import { UpdateCompanyArgs } from "./UpdateCompanyArgs";
 import { DeleteCompanyArgs } from "./DeleteCompanyArgs";
 import { CompanyService } from "../company.service";
 @common.UseGuards(GqlDefaultAuthGuard, gqlACGuard.GqlACGuard)
@@ -75,6 +78,47 @@ export class CompanyResolverBase {
       return null;
     }
     return result;
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Company)
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "create",
+    possession: "any",
+  })
+  async createCompany(
+    @graphql.Args() args: CreateCompanyArgs
+  ): Promise<Company> {
+    return await this.service.createCompany({
+      ...args,
+      data: args.data,
+    });
+  }
+
+  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @graphql.Mutation(() => Company)
+  @nestAccessControl.UseRoles({
+    resource: "Company",
+    action: "update",
+    possession: "any",
+  })
+  async updateCompany(
+    @graphql.Args() args: UpdateCompanyArgs
+  ): Promise<Company | null> {
+    try {
+      return await this.service.updateCompany({
+        ...args,
+        data: args.data,
+      });
+    } catch (error) {
+      if (isRecordNotFoundError(error)) {
+        throw new GraphQLError(
+          `No resource was found for ${JSON.stringify(args.where)}`
+        );
+      }
+      throw error;
+    }
   }
 
   @graphql.Mutation(() => Company)

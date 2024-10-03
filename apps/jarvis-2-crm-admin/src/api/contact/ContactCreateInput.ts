@@ -1,1 +1,4 @@
-export type ContactCreateInput = {};
+export type ContactCreateInput = {
+  assignedTo?: string | null;
+  manager?: string | null;
+};
